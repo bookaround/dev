@@ -1,0 +1,96 @@
+{% extends "student/base.html" %}
+{% load staticfiles %}
+
+{% block greeting %} {{name}} {% endblock greeting %}
+{% block student_avatar %}{{student_avatar}}{% endblock student_avatar %}
+
+
+
+{% block content %}
+
+
+
+
+
+
+<div class="row">
+  <div class="col-sm-12"><br/>
+
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">I read</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Enter book title">
+    </div>
+  </div><br/>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">And I gave it a</label>
+    <div class="col-sm-10">
+              <div class="btn-group btn-group-justified">
+  <div class="btn-group">
+            <button type="button" class="btn btn-default"><img src="{% static "bookaround/images/emoticon4.png" %}" /></button>
+              </div>
+  <div class="btn-group">
+            <button type="button" class="btn btn-default"><img src="{% static "bookaround/images/emoticon3.png" %}" /></button>
+              </div>
+  <div class="btn-group">
+            <button type="button" class="btn btn-default"><img src="{% static "bookaround/images/emoticon2.png" %}" /></button>
+              </div>
+  <div class="btn-group">
+            <button type="button" class="btn btn-default"><img src="{% static "bookaround/images/emoticon1.png" %}"  /></button>
+          </div>
+          </div>
+    </div>
+  </div><br/>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Record Video Review</label>
+    <div class="col-sm-10">
+        <a  id="record_button" href="#">
+        <img src="{% static "bookaround/images/record_video.png" %}" style="width:100px;height:100px"/>
+        </a>
+    </div>
+  </div><br/>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Tell Your Friends</label>
+    <div class="col-sm-10">
+          <select data-placeholder="Choose some friends" class="chosen-select" multiple style="width:100%">
+            <option value=""></option>
+            <option value="1">Bobby Krupper</option>
+            <option value="2">Marla Smith</option>
+            <option value="3">Carl Sanders</option>
+            <option value="4">Vanessa Garcia</option>
+            <option value="5">Holly Daniels</option>
+            <option value="6">Addie McKensey</option>
+            <option value="7">Sarah Oberland</option>
+          </select><br/><br/>
+          <input type="checkbox">Share with my whole class
+    </div>
+  </div><br/>
+
+
+
+
+  <div class="form-group">
+    <div class=" col-sm-offset-2   col-sm-4">
+      <button type="submit" class="btn btn-default">Cancel</button>
+    </div>
+        <div class=" col-sm-4">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </div>
+</form>
+
+
+
+  </div>
+</div>
+
+<script type="text/javascript" src="{% static "bookaround/chosen/chosen.jquery.min.js" %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static "bookaround/chosen/chosen.css" %}" />
+  <script type="text/javascript">
+  $(document).ready(function() {
+      $(".chosen-select").chosen({});
+    });
+  </script>
+
+  {% endblock content %}

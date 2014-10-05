@@ -1,0 +1,37 @@
+{% extends "student/base.html" %}
+{% load staticfiles %}
+
+{% block greeting %} {{name}} {% endblock greeting %}
+{% block student_avatar %}{{student_avatar}}{% endblock student_avatar %}
+{% block content %}
+
+
+<div id="homepage" class="row">
+  <div id="student-round-image-first" class="col-sm-4">
+    <a href="{% url 'student:review' %}">
+
+    <img class="img-circle student-round-image img-responsive img-thumbnail"1
+         src="{% static "bookaround/images/recommend_book.png" %}" alt="review"/>
+    <h1>Recommend</h1>
+    </a>
+  </div>
+  <div id="student-round-image-second" class="col-sm-4">
+    <a href="{% url 'student:find' %}">
+    <img class="img-circle student-round-image img-responsive img-thumbnail" 
+         src="{% static "bookaround/images/students_reading.png" %}" alt="review"/>
+    <h1>Find A Book</h1>
+    </a>
+  </div>
+  <div id="student-round-image-third" class="col-sm-4">
+    <a href="">
+    <img class="img-circle student-round-image img-responsive img-thumbnail" 
+         src="{% static "bookaround/images/class_library.png" %}" alt="review"/>
+    <h1>Community Bookshelf </h1>
+    </a>
+  </div>
+  
+</div>
+
+
+
+  {% endblock content %}

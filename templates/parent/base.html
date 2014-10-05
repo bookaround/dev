@@ -1,0 +1,87 @@
+{% load staticfiles %}
+
+<head>
+    <title>Parent Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="{% static "bookaround/images/b.png" %}">    
+<link rel="stylesheet" href="{% static "bookaround/css/bootstrap-theme.css" %}" type="text/css">
+<link rel="stylesheet" href="{% static "bookaround/css/bootstrap.css" %}" type="text/css">
+<link rel="stylesheet" href="{% static "bookaround/css/carousel.css" %}" type="text/css">
+<script src="{% static "bookaround/js/jquery.js" %}" type="text/JavaScript"> </script>
+<!--<script src="{% static "bookaround/js/bootstrap.js" %}" type="text/JavaScript"> </script>-->
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
+
+
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+
+  </head>
+  <body>
+
+    <div class="container-fluid" id="student-home">
+      <div class="row">
+        <div class="col-sm-2" id="student-logo">
+          <a  href="{% url 'bookaround:index'%}">BookAround</a>
+        </div>
+        <div class="col-sm-2">
+          <a href="home" class="btn btn-danger btn-lg" role="button">
+            <span class="glyphicon glyphicon-home"></span> <br/>HOME</a>
+        </div>
+     <!--  <div class="col-sm-2 ">
+          <a href="review" class="btn btn-warning btn-lg" role="button">
+            <span class="glyphicon glyphicon-share"></span> <br/>RECOMMEND</a>
+        </div> -->
+        <div class="col-sm-2 ">
+          <a href="{% url 'parent:find' %}" class="btn btn-info btn-lg" role="button">
+            <span class="glyphicon glyphicon-search"></span> <br/>FIND</a>
+        </div>
+        <div class="col-sm-2">
+          <a href="{% url 'parent:bookshelf' %}" class="btn btn-primary btn-lg" role="button">
+            <span class="glyphicon glyphicon-book"></span> <br/>BOOKSHELF</a>
+        </div>
+        <div class="col-sm-2">
+          <a href="{% url 'parent:parent_profile' %}" class="btn btn-success btn-lg" role="button">
+            <span class="glyphicon glyphicon-user"></span> <br/>YOUR PROFILE</a>
+        </div>        
+        <div class="col-sm-2">
+          <a href="{% url 'parent:student_profile' %}" class="btn btn-success btn-lg" role="button">
+            <span class="glyphicon glyphicon-user"></span> <br/>STUDENT PROFILE</a>
+        </div>
+      </div>
+      <div id="" class="row">
+        <div class="col-sm-2 sidebar center-block">
+          <img src="{% static "bookaround/images/"%}{% block student_avatar %}user2.png{% endblock student_avatar %}" class="thumbnail img-responsive center-block" alt="User" id="profile-img"/>
+          <h6 style="text-align: center">{% block student_name %}  {% endblock student_name %}</h6>          
+          <h1 style="text-align: center">Hello</h1>
+          <h1 style="text-align: center">{% block greeting %} User! {% endblock greeting %}
+          </h1>
+          <a href="{% url 'bookaround:index' %}" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Log out</a>
+        </div>
+        <div class="col-sm-10">
+{% block modals %}
+
+{% endblock modals %}
+
+{% block content %}
+
+Content goes here...
+
+{% endblock content %}
+
+  </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ -->
+
+  </body>
+</html>

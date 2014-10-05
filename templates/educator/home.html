@@ -1,0 +1,121 @@
+{% extends "educator/base.html" %}
+{% load staticfiles %}
+
+
+{% block student_name %} Viewing: {{student.first_name}} {{student.last_name}} {% endblock student_name %}
+{% block greeting %} {{user.profile.first_name}} {{user.profile.last_name}}  {% endblock greeting %}
+{% block student_avatar %}{{user.profile.avatar}}{% endblock student_avatar %}
+{% block content %}
+
+
+
+
+
+
+<div class="row">
+<div class="col-sm-12">  
+<br/>
+
+
+
+
+<table class="table table-striped">
+<tr>
+<th>
+Username
+</th>
+<th>
+First Name
+</th>
+<th>
+Last Name
+</th>
+<th>
+Avatar
+</th>
+<th>
+Password
+</th>
+<th>
+Lexile Score
+</th>
+<th>
+Points
+</th>
+<th>
+School Name
+</th>
+<th>
+School Year
+</th>
+<th>
+Classroom Number
+</th>
+<th>
+</th>
+</tr>
+
+
+{% for student in my_students %}
+<tr>
+
+
+<td>
+{{student.user_profile.user.username}}
+</td>
+
+<td>
+{{student.user_profile.first_name}}
+</td>
+
+<td>
+{{student.user_profile.last_name}}
+</td>
+
+<td>
+{{student.user_profile.avatar}}
+</td>
+
+<td>
+{{student.plaintext_pw}}
+</td>
+
+<td>
+{{student.lexile_score}}
+</td>
+
+<td>
+{{student.points}}
+</td>
+
+<td>
+{{student.school_name}}
+</td>
+
+<td>
+{{student.school_year}}
+</td>
+
+<td>
+{{student.classroom_number}}
+</td>
+<td>
+<a href="{% url 'educator:add_parent' student.user_profile.user.username%}">Add Parent</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+
+
+<a href="{% url 'educator:add_student' %}">Add student</a>
+
+
+
+
+
+
+</div></div>
+
+  {% endblock content %}

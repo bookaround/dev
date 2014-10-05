@@ -1,0 +1,77 @@
+{% extends "educator/base.html" %}
+{% load staticfiles %}
+
+
+{% block student_name %} Viewing: {{student.first_name}} {{student.last_name}} {% endblock student_name %}
+{% block greeting %} {{user.profile.first_name}} {{user.profile.last_name}}  {% endblock greeting %}
+{% block student_avatar %}{{student.avatar}}{% endblock student_avatar %}
+{% block content %}
+
+
+
+
+
+
+
+
+  
+  
+
+        {% if registered %}
+        Bookaround says: <strong>You've successfully registered a parent!</strong>
+        <a href="{% url 'educator:home' %}">Return to your homepage.</a><br />
+        {% else %}
+
+
+<div class="container">
+            <div class="row" id="login">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Register A Parent for {{student}}</h3>
+                        </div>
+                        <div class="panel-body">
+
+        <form id="login_form" method="post" action="{% url 'educator:add_parent' student %}">
+            {% csrf_token %}
+            {% for form in forms %}
+                {% for field in form %}
+                
+                    <div class="form-group">
+                    {% if  field.errors %}
+                    <div class="row">
+                    <div class="col-sm-12">
+                    {{ field.errors }}
+                    </div>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                    <div class="col-sm-4">
+                        
+                        {{ field.label_tag }} 
+                        </div>
+                     <div class="col-sm-8">   
+                        {{ field }}
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}              
+
+            <p class="text-center">
+                        <input type="submit" value="submit" />
+            </p>
+            </form>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+
+
+        {% endif %}
+        
+     
+        
+          {% endblock content %}

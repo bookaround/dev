@@ -1,0 +1,79 @@
+{% extends "student/base.html" %}
+{% load staticfiles %}
+
+{% block greeting %} {{student.name}} {% endblock greeting %}
+{% block student_avatar %}{{student.avatar}}{% endblock student_avatar %}
+
+{% block content %}
+
+
+
+
+
+
+
+
+<form method="post" action="{% url 'student:process_results' %}">
+{% csrf_token %}
+<br/>
+<div class="row">
+    <div class="col-sm-12">
+    
+{% for item in results%}
+
+
+
+    <div class="col-sm-3" style="min-height:350px">
+      <div class="thumbnail">      
+        <img src="{{item.volumeInfo.imageLinks.thumbnail}}" style="height:170px;width:auto"/>
+        <div class="caption">
+                <p class="text-center">{{item.volumeInfo.title|truncatechars:30}}{% if item.volumeInfo.title|length > 30 %}...{% endif %}</p>
+                    <p class="text-center">{{item.volumeInfo.authors|first}}</p>
+
+<div class="row">
+                    <div class="checkbox col-md-8 col-centered" style="width:220px">
+                      <label>
+                        <input type="checkbox" name="am_read_list" value="{{item.selfLink}}"/>
+                        I am reading this book
+                      </label>
+<br/>
+                      <label>
+                        <input type="checkbox" name="want_read_list" value="{{item.selfLink}}">
+                        I want to read this book
+                      </label>
+<br/>
+                      <label>
+                        <input type="checkbox" name="have_read_list" value="{{item.selfLink}}">
+                        I have read this book
+                      </label>
+                    </div>        
+</div>
+
+    </div>
+      </div>
+    </div>
+    
+    
+
+    {% if forloop.counter|divisibleby:4 %}
+</div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+    {% endif %}    
+    
+
+{% endfor %}
+<div class="row">
+    <div class="col-sm-12">
+    <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-thumbs-up" text="test"></span> Finished <span class="glyphicon glyphicon-thumbs-up" text="test"></span></button>
+    </div>
+</div>
+</form>
+
+
+{% endblock content %}
+  </body>
+</html>
+
+

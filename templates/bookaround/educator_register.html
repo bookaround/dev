@@ -1,0 +1,60 @@
+{% load staticfiles %}
+
+
+<head>
+    <title>BookAround</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static "bookaround/css/bootstrap-theme.css" %}" type="text/css">
+<link rel="stylesheet" href="{% static "bookaround/css/bootstrap.css" %}" type="text/css">
+<link rel="stylesheet" href="{% static "bookaround/css/carousel.css" %}" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+</head>
+
+
+<div class="container">
+            <div class="row" id="login">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Educator Registration</h3>
+                        </div>
+                        <div class="panel-body">
+
+        <form id="login_form" method="post" action="{% url 'bookaround:educator_register' %}">
+            {% csrf_token %}
+            {% for form in forms %}
+                {% for field in form %}
+                
+                    <div class="form-group">
+                    {% if  field.errors %}
+                    <div class="row">
+                    <div class="col-sm-12">
+                    {{ field.errors }}
+                    </div>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                    <div class="col-sm-4">
+                        
+                        {{ field.label_tag }} 
+                        </div>
+                     <div class="col-sm-8">   
+                        {{ field }}
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}              
+
+<p class="text-center">
+            <input type="submit" value="submit" />
+</p>
+            </form>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>
+        </div>
+        

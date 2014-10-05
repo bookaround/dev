@@ -1,0 +1,50 @@
+{% load staticfiles %}
+
+
+<head>
+    <title>BookAround</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static "bookaround/css/bootstrap-theme.css" %}" type="text/css">
+<link rel="stylesheet" href="{% static "bookaround/css/bootstrap.css" %}" type="text/css">
+<link rel="stylesheet" href="{% static "bookaround/css/carousel.css" %}" type="text/css">
+<script src="{% static "bookaround/js/jquery.js" %}" type="text/JavaScript"> </script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+            <div class="row" id="login">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Please Select Student {{message}}</h3>
+                        </div>
+                        <div class="panel-body">
+
+
+
+
+
+                            <form accept-charset="UTF-8" role="form" action="{% url 'parent:student_selected' %}" method="post">
+                                <fieldset>
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <select id="student_select" name="student_select">
+                                        {%for student in theirStudents%}
+                                        <option value="{{student.username}}" >{{student.first_name}}</option>
+                                        {%endfor%}
+                                        </select>
+                                    </div>
+                                    <input type="submit" class="btn btn-lg btn-success btn-block" value="Continue"/>
+                                </fieldset>
+                            </form>
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>

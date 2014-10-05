@@ -1,0 +1,92 @@
+{% extends "student/base.html" %}
+{% load staticfiles %}
+{% block greeting %} {{name}} {% endblock greeting %}
+{% block student_avatar %}{{student_avatar}}{% endblock student_avatar %}
+{% block content %}
+
+<div id="viewbook" class="row">
+  <div class="col-sm-4">
+    <img src="http://upload.wikimedia.org/wikipedia/en/7/79/The_Giving_Tree.jpg" />
+  </div>
+  <div class="col-sm-8">
+    <h1>Title: The Giving Tree</h1>
+    <h1>Author: Shel Silverstein</h1>
+    <h1>Description:</h1>
+    <h4 style="line-height: 150%;margin-bottom: 40px;">
+      The Giving Tree is a classic and moving story by Shel Silverstein.Once there was a little tree ... and she loved 
+      a little boy. So begins a story of unforgettable perception, beautifully written and illustrated by the gifted and 
+      versatile Shel Silverstein. Every day the boy would come to the tree to eat her apples, swing from her branches, 
+      or slide down her trunk ... and the tree was happy. But as the boy grew older he began to want more from the tree, 
+      and the tree gave and gave and gave. This is a tender story, touched with sadness, aglow with consolation.
+    </h4>
+
+
+    <div class="col-sm-4">
+      <a href="/student/bookshelf" class="btn-block btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span><br />
+        ADD TO SHELF 
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <a href="/student/review" class="btn-block btn btn-warning">
+        <span class="glyphicon glyphicon-share"></span><br />
+        REVIEW
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <a href="/student/bookshelf" class="btn-block btn btn-info">
+        <span class="glyphicon glyphicon-book"></span><br />
+        I'M READING
+      </a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <h1>Recent reviews</h1>
+    <div class="media">
+      <a class="pull-left" href="#">
+        <img class="media-object" src="{% static "bookaround/images/emoticon1.png" %}" alt="review">
+      </a>
+      <div class="media-body">
+        <h4 >Jose O.</h4>
+        reviewed that book
+      </div>
+    </div>
+    <div class="media">
+      <a class="pull-left" href="#">
+        <img class="media-object" src="{% static "bookaround/images/emoticon3.png" %}" alt="review">
+      </a>
+      <div class="media-body">
+        <h4>Ashley D.</h4>
+        reviewed that book
+      </div>
+    </div>
+    <div class="media">
+      <a class="pull-left" href="#">
+        <img class="media-object" src="{% static "bookaround/images/emoticon4.png" %}" alt="review">
+      </a>
+      <div class="media-body">
+        <h4>Peter G.</h4>
+        reviewed that book
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <h1>Trending reviews</h1>
+    <div class="col-sm-6">
+      <video controls>
+         <source src="/assets/featured_video.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="col-sm-6">
+      <video controls>
+         <source src="/assets/featured_video.mp4" type="video/mp4"/>
+      </video>
+    </div>
+  </div>
+</div>
+
+
+
+  {% endblock content %}

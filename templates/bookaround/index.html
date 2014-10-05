@@ -1,0 +1,228 @@
+{% extends "bookaround/base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Student Login</h4>
+      </div>
+      <div class="modal-body">
+                            <form accept-charset="UTF-8" role="form" method="post" action="{% url 'student:student_login' %}">
+                                <fieldset>
+                                  {% csrf_token %}
+                                    <div class="form-group">
+                                        {{ student_login_form.username }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ student_login_form.password }}
+                                    </div>
+<input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
+                                </fieldset>
+                            </form>
+      </div>
+      <!-- <div class="modal-footer"> </div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  <div class="modal fade" id="parentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Parent Login</h4>
+      </div>
+      <div class="modal-body">
+                            <form accept-charset="UTF-8" role="form" method="post" action="{% url 'parent:parent_login' %}">
+                                <fieldset>
+                                  {% csrf_token %}
+                                    <div class="form-group">
+                                        {{ parent_login_form.username }}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ parent_login_form.password }}  
+                                    </div>
+                                     <input type="submit" class="btn btn-lg btn-success btn-block" value="Login"/>
+                                </fieldset>
+                            </form>
+      </div>
+      <!-- <div class="modal-footer"> </div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<div class="modal fade" id="example_video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Siya Reviews <strong>The Pigeon Wants a Puppy</strong></h4>
+      </div>
+      <div class="modal-body">
+<div class="center-block">
+        <video width="100%" height="auto" controls class="center-block">
+  <source src="{% static "bookaround/videos/pigeon.mp4" %}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</div>
+
+
+<!--          <img class=" img-responsive img-thumbnail"1
+         src="{% static "bookaround/images/recommend_book.png" %}" alt="review"/>-->
+      </div>
+      <div class="modal-footer">
+
+                                    <a href="/bookaround" class="btn btn-lg btn-default btn-block">Back</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="navbar-wrapper">
+  <div class="container">
+
+    <div id="menu" class="navbar navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand logo" href="/bookaround"><img src="{% static "bookaround/images/logo2.png" %}" alt="logo" /></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/bookaround">Home</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="{% url 'bookaround:user_login' %}" >Login</a></li>
+            <li><a href="{% url 'bookaround:educator_register' %}">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- Carousel
+================================================== -->
+<div id="myCarousel" class="carousel slide " data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators" style="display:none">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+
+      <img src="{% static "bookaround/images/banner2.png" %}" alt="First slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1 id="student-logo">BookAround</h1>
+          <p><h2>BookAround is an online social platform designed to encourage student collaboration and literacy</h2></p>
+          <p><a class="btn btn-lg btn-primary" href="/bookaround" role="button">Teacher Registration</a>
+          <a class="btn btn-lg btn-primary" href="#" role="button" data-toggle="modal" data-target="#example_video">See A Review</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /.carousel -->
+
+<!-- Wrap the rest of the page in another container to center all the content. -->
+<div>
+<div  class="container marketing">
+
+  <div class="row">
+    <div class="col-lg-4">
+      <img class="img-circle" src="{% static "bookaround/images/student.png" %}" alt="Student" style="width: 140px; height: 140px;">
+      <h2>Students</h2>
+      <p><a class="btn btn-student btn-lg" href="{% url 'bookaround:user_login' %}">
+          <span class="glyphicon glyphicon-hand-right"></span> Login </a>
+      </p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="img-circle" src="{% static "bookaround/images/parent.png"%}" alt="Parent" style="width: 140px; height: 140px;">
+      <h2>Parents</h2>
+      <p><a class="btn btn-parent btn-lg" href="{% url 'bookaround:user_login' %}"> 
+          <span class="glyphicon glyphicon-hand-right"></span> Login </a>
+      </p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="img-circle" src="{% static "bookaround/images/teacher.png"%}" alt="Teacher" style="width: 140px; height: 140px;">
+      <h2>Teachers</h2>
+      <p><a class="btn btn-teacher btn-lg" href="{% url 'bookaround:user_login' %}">
+          <span class="glyphicon glyphicon-hand-right"></span> Login </a>
+      </p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+
+
+   <!--
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+     <div class="col-md-6">
+      <div class="embed-responsive embed-responsive-4by3">
+        <video width="520" height="390" controls>
+          <source src="/assets/featured_video-6ed8d6875904098d46629ab7aeea779f.mp4" type="video/mp4"/>
+        </video>  
+      </div>
+    </div>
+
+
+    <div class="col-md-6">
+      <h2 class="featurette-heading">Students will be able to upload video reviews about books they have read</span></h2>
+    </div>
+  </div>
+-->
+
+
+  <hr class="featurette-divider">
+  <div class="row featurette" id="mission">
+    <div class="col-lg-12">
+    <h1 class="text-center">Our Mission:</h1>
+    <p class="lead text-center">Our mission is to help kids read and collaborate through our online video book review platform.</p>
+  </div>
+  </div>
+
+<hr/>
+<br/>
+<br/>
+<br/>
+
+  <div class="row featurette" id="contact">
+    <div class="col-lg-12">    
+    <h4 class="text-right">For more information about our platform, contact:</h3>
+    <address class="text-right">
+      <strong>Mark Danforth</strong><br/>
+      (913) 593-7731<br/>
+      <a href="mailto:mddanforth@gmail.com">mddanforth@gmail.com</a><br/>
+    </address>
+  </div>
+</div>
+<hr/>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2014 BookAround, Inc. &middot; <a href="#" style="color:#FFFFFF">Privacy</a> &middot; <a href="#" style="color:#FFFFFF">Terms</a></p>
+  </footer>
+
+</div><!-- /.container -->
+</div>
+
+{% endblock content %}

@@ -1,0 +1,178 @@
+{% extends "parent/base.html" %}
+{% load staticfiles %}
+
+{% block student_name %} Viewing: {{student.first_name}} {{student.last_name}} {% endblock student_name %}
+{% block greeting %} {{parent.surname}} {{parent.last_name}} {% endblock greeting %}
+{% block student_avatar %}{{student.avatar}}{% endblock student_avatar %}
+
+{% block modals %}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Siya's Video Review</h4>
+      </div>
+      <div class="modal-body">
+<div class="center-block">
+        <video width="100%" height="auto" controls class="center-block">
+  <source src="{% static "bookaround/videos/pigeon.mp4" %}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</div>
+
+
+<!--          <img class=" img-responsive img-thumbnail"1
+         src="{% static "bookaround/images/recommend_book.png" %}" alt="review"/>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <a href="viewbook" class="btn btn-info btn-block"> Explore This Book</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{%endblock modals %}
+
+
+
+{% block content %}
+<style>
+
+.thumbnail {text-align:center;
+
+}
+
+</style>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+<div class="row">
+<!-- Button trigger modal -->
+
+
+
+
+
+
+  <div class="col-sm-12">
+
+
+
+
+
+    <h1>Your Recommendations</h1>
+
+    {% for book in rec_books %}
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img 
+    src="{% static "bookaround/images/"%}{{ book.cover }}">
+          <div class="caption">
+                  <h3>{{ book.title }}</h3>
+                  <p>{{ book.author }}</p>
+            <p><a href="#" class="btn btn-info btn-block" role="button" data-toggle="modal" data-target="#myModal">Watch a Review</a> </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+
+
+
+
+
+
+  </div>
+
+</div>
+<div class="row">
+	  <div class="col-sm-12">
+    <h1>Find</h1>
+<div ng-controller="TestCtrl">
+<input id="search_input" class="input-lg form-control" placeholder="Search for your book here"
+        ng-autocomplete="result1" details="details1" options="options1"/>
+</div>
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Filter by category</h1>
+  </div>
+ </div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"   value="">
+        Fairy Tales
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"  value="">
+        Picture Books
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"   value="">
+        Fantasy
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"   value="">
+        Fiction
+      </label>
+    </div>
+ </div>
+
+  <div class="col-sm-6">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"  value="">
+        Biography
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"  value="">
+        Poetry
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"  value="">
+        Illustrated Novel
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="">
+        Historical Fiction
+      </label>
+    </div>
+  </div>
+ </div>    
+    <a href="viewbook" class="btn btn-info btn-block">
+      <span class="glyphicon glyphicon-search"></span> <br/>FIND</a>
+  </div>
+
+</div>
+</div>
+
+
+
+
+  {% endblock content %}	

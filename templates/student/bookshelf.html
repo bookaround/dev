@@ -1,0 +1,125 @@
+{% extends "student/base.html" %}
+{% load staticfiles %}
+{% block greeting %} {{name}} {% endblock greeting %}
+{% block student_avatar %}{{student_avatar}}{% endblock student_avatar %}
+
+{% block modals %}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Siya's Video Review</h4>
+      </div>
+      <div class="modal-body">
+<div class="center-block">
+        <video width="100%" height="auto" controls class="center-block">
+  <source src="{% static "bookaround/videos/junie.mp4" %}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+</div>
+
+
+<!--          <img class=" img-responsive img-thumbnail"1
+         src="{% static "bookaround/images/recommend_book.png" %}" alt="review"/>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <a href="viewbook" class="btn btn-info btn-block"> Explore This Book</a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{%endblock modals %}
+
+
+
+
+
+
+
+
+{% block content %}
+<style>
+
+</style>
+<br/>
+<div class="row">
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+      <h1 class="col-sm-2 control-label">I'm Reading</h1>
+
+  <div class="col-sm-10">
+    {% for book in am_read_books %}
+    <div class="col-sm-3">
+      <div class="thumbnail">      
+        <img src="{{book.thumbnail}}"/>
+        <div class="caption">
+                <p class="text-center ">{{book.title}}</p>
+                 <p><a href="#" class="btn btn-info btn-block" role="button" data-toggle="modal" data-target="#myModal">Watch a Review</a> </p>
+
+    </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  </div><br/>
+
+
+  <div class="form-group">
+    <h1 class="col-sm-2 control-label">I Want to Read</h1>
+    <div class="col-sm-10">
+    {% for book in want_read_books %}
+    
+   <div class="col-sm-3">
+    <div class="thumbnail">
+        <img src="{{book.thumbnail}}"/>
+        <div class="caption">
+          <p class="text-center ">{{book.title}}</p>
+           <p><a href="#" class="btn btn-info btn-block" role="button" data-toggle="modal" data-target="#myModal">Watch a Review</a> </p>
+
+      </div>
+    </div>
+  </div>   
+    {% endfor %}
+
+
+
+
+    </div>
+  </div><br/>
+
+
+    <div class="form-group">
+    <h1 class="col-sm-2 control-label">I Have Read</h1>
+    <div class="col-sm-10">
+
+    {% for book in have_read_books %}
+   <div class="col-sm-3">
+    <div class="thumbnail"><a href="viewbook">
+        <img src="{{book.thumbnail}}"/>
+        <div class="caption">
+          <p class="text-center ">{{book.title}}</p>
+           <p><a href="#" class="btn btn-info btn-block" role="button" data-toggle="modal" data-target="#myModal">Watch a Review</a> </p>
+
+           </div>
+    </div>
+  </div>   
+    {% endfor %}
+
+
+
+
+
+    </div>
+  </div><br/>
+
+
+
+</form>
+
+</div>
+
+
+  {% endblock content %}
